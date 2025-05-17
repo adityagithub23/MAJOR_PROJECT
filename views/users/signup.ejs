@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <i class="fa-solid fa-mountain-sun mb-3" style="color: #fe424d; font-size: 2.5rem;"></i>
+            <h2 class="fw-bold">Join Wanderlust</h2>
+            <p class="text-muted">Create an account to start your adventure</p>
+          </div>
+          
+          <form action="/signup" method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0">
+                  <i class="fa-regular fa-user text-muted"></i>
+                </span>
+                <input 
+                  name="username" 
+                  id="username" 
+                  type="text" 
+                  class="form-control border-start-0" 
+                  placeholder="Choose a username"
+                  required
+                >
+              </div>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0">
+                  <i class="fa-regular fa-envelope text-muted"></i>
+                </span>
+                <input 
+                  name="email" 
+                  id="email" 
+                  type="email" 
+                  class="form-control border-start-0" 
+                  placeholder="you@example.com"
+                  required
+                >
+              </div>
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+            
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0">
+                  <i class="fa-solid fa-lock text-muted"></i>
+                </span>
+                <input 
+                  name="password" 
+                  id="password" 
+                  type="password" 
+                  class="form-control border-start-0" 
+                  placeholder="Create a password"
+                  required
+                >
+              </div>
+              <div class="invalid-feedback">Password is required.</div>
+              <div class="form-text mt-2">Choose a strong password.</div>
+            </div>
+            
+            <div class="d-grid">
+              <button class="btn custom-btn-blue text-white py-2 fw-bold">Create Account</button>
+            </div>
+            
+            <div class="text-center mt-4">
+              <p class="mb-0">Already have an account? <a href="/login" class="text-decoration-none" style="color: #fe424d;">Log in</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

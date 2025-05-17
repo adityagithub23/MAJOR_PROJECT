@@ -1,0 +1,203 @@
+  <nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center"  href="/listings">
+            <i class="fa-solid fa-mountain-sun me-2" style="color: #fe424d;"></i>
+            <span class="fw-bold clr">Wanderlust</span>
+        </a>
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav me-auto">
+            <a class="nav-link bdr" href="/listings">Explore</a>
+          </div>
+          <div class="navbar-nav ms-auto">
+            <form class="d-flex search-form" role="search" >
+              <div class="search-container">
+                <input class="form-control search-inp" type="search" placeholder="Search Destinations">
+                <button class="search-btn" type="submit">
+                  <i class="fa-solid fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link bdr" href="/listings/new">Add your home</a>
+            <% if(!currUser) { %>
+              <a class="nav-link btn custom-btn-blue text-white me-2 px-3" href="/signup">Sign up</a>
+              <a class="nav-link btn custom-btn-green text-white px-3" href="/login">Log in</a>  
+            <% } %>
+            <% if(currUser) { %>
+              <div class="dropdown">
+                <button class="btn btn-link nav-link p-0 d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div class="avatar-circle me-1">
+                    <span class="avatar-initials">
+                      <%= currUser.username ? currUser.username.charAt(0).toUpperCase() : 'U' %>
+                    </span>
+                  </div>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item text-danger" href="/logout">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i> Log out
+                  </a></li>
+                </ul>
+              </div>
+            <% } %>
+          </div>
+        </div>
+    </div>
+</nav>
+
+
+<style>
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.6rem 3.5rem 0.6rem 1.2rem;
+    border: 1px solid #ced4da;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .search-inp:focus {
+    box-shadow: 0 0 0 0.25rem rgba(254, 66, 77, 0.25);
+    border-color: #fe424d;
+    outline: none;
+  }
+
+  .search-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fe424d;
+    color: white;
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  
+  .search-btn:hover {
+    background-color: #e63946;
+    transform: translateY(-50%) scale(1.05);
+  }
+  
+  .search-form {
+    min-width: 250px;
+    max-width: 400px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .search-form {
+      width: 100%;
+    }
+    
+    .search-inp {
+      padding: 0.5rem 3rem 0.5rem 1rem;
+    }
+    
+    .search-btn {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  /* Custom button colors */
+  .bdr{
+    border: 1px solid #eae9e9;
+    border-radius: 5px;
+  }
+
+  .custom-btn-blue {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+  
+  .custom-btn-blue:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+  }
+  
+  .custom-btn-green {
+    background-color: #198754;
+    border-color: #198754;
+  }
+  
+  .custom-btn-green:hover {
+    background-color: #157347;
+    border-color: #146c43;
+  }
+  
+  /* Icon color */
+  .navbar-brand .fa-mountain-sun {
+    color: #fe424d;
+  }
+  
+  /* Avatar styling */
+  .avatar-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #fe424d;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .avatar-initials {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 767.98px) {
+    .navbar-nav {
+      padding-top: 0.5rem;
+    }
+    
+    .navbar-nav .nav-link {
+      padding: 0.5rem 0;
+      margin: 0.25rem 0;
+    }
+    
+    .custom-btn-blue, .custom-btn-green {
+      display: block;
+      width: 100%;
+      margin: 0.25rem 0;
+      text-align: center;
+    }
+    
+    .avatar-circle {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Hide search form on small screens */
+  @media (max-width: 998px) {
+    .search-form {
+      display: none !important;
+    }
+  }
+</style>
